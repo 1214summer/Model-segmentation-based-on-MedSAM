@@ -1,0 +1,31 @@
+server:
+  port: 3000
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+#    druid:
+      driver-class-name: ${GSH.datasource.driver-class-name}
+      url: jdbc:mysql://${GSH.datasource.host}:${GSH.datasource.port}/${GSH.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${GSH.datasource.username}
+      password: ${GSH.datasource.password}
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: assign_id
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
